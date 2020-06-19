@@ -1,0 +1,55 @@
+{
+    "name": "russsiq/laravel-dom-manipulator",
+    "description": "Класс-обертка для модуля DOM в Laravel 7.x.",
+    "keywords": ["laravel", "dom-document", "dom-document-wrapper", "laravel-dom-manipulator"],
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://github.com/russsiq/laravel-dom-manipulator",
+    "support": {
+        "issues": "https://github.com/russsiq/laravel-dom-manipulator/issues",
+        "source": "https://github.com/russsiq/laravel-dom-manipulator"
+    },
+    "authors": [{
+        "name": "Рустам Гимранов",
+        "email": "rustam_gimranov@mail.ru",
+        "homepage": "https://github.com/russsiq",
+        "role": "Developer"
+    }],
+    "require": {
+        "php": ">=7.3.0",
+        "ext-dom": "*",
+		"ext-libxml": "*",
+        "illuminate/support": "7.*"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.3.1",
+        "phpunit/phpunit": "^9.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Russsiq\\DomManipulator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Russsiq\\DomManipulator\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Russsiq\\DomManipulator\\ManipulatorServiceProvider"
+            ],
+            "aliases": {
+                "DOMManipulator": "Russsiq\\DomManipulator\\Facades\\DOMManipulator"
+            }
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-win7": "vendor\\bin\\phpunit",
+        "testdox": "vendor\\bin\\phpunit --testdox-html tests/testdox.html"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
