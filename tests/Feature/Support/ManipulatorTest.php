@@ -117,4 +117,35 @@ class ManipulatorTest extends TestCase
 
         $this->assertEquals($expected, (string) $result);
     }
+
+    /**
+     * @test
+     * @covers ::extractImages
+     *
+     * Общий тест на извлечение массива путей изображений.
+     * @return void
+     */
+    public function testExtractImages(): void
+    {
+        $manipulator = $this->createManipulator();
+
+        $content = '<h2>Velit rerum aut adipisci eius et est deserunt et et error</h2>'.PHP_EOL
+            .'<figure class="single_article__image" contenteditable="false" data-id="2">'.PHP_EOL
+                .'<picture class="single_article_image__inner">'.PHP_EOL
+                    .'<img class="single_article_image__img" alt="some-image" src="http://bixbite.local/storage/image/default/some-image_1592929131.jpeg">'.PHP_EOL
+                .'</picture>'.PHP_EOL
+                .'<figcaption class="single_article_image__caption">some-image</figcaption>'.PHP_EOL
+            .'</figure>'.PHP_EOL;
+        $content .= '<img src="http://bixbite.local/some-image.png" alt="some-image" />'.PHP_EOL;
+
+        $result = $manipulator::wrapAsDocument($content)
+            ->extractImages();
+
+        $this->assertIsArray($result);
+        $this->assertEquals($result, [
+                'http://bixbite.local/storage/image/default/some-image_1592929131.jpeg',
+                'http://bixbite.local/some-image.png',
+
+            ]);
+    }
 }

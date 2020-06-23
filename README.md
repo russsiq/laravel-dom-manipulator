@@ -75,9 +75,14 @@ print_r((string) $result);
 Список доступных публичных методов класса-обертки `Manipulator`:
 
  - [each](#method-each)
+ - [extractImages](#method-extractImages)
  - [remove](#method-remove)
  - [revisionPreTag](#method-revisionPreTag)
  - [getContent](#method-getContent)
+
+<a name="method-extractImages"></a>
+##### `extractImages(): array`
+Извлечение массива путей изображений.
 
 <a name="method-each"></a>
 ##### `each(string $name, callable $callback): self`

@@ -137,6 +137,21 @@ class Repository implements DOMRepositoryContract
     }
 
     /**
+     * Извлечение массива путей изображений.
+     * @return array
+     */
+    public function extractImages(): array
+    {
+        $images = [];
+
+        $this->each('img', function (DOMElement $element) use (&$images) {
+            $images[] = $element->getAttribute('src');
+        });
+
+        return $images;
+    }
+
+    /**
      * Получить строковое представление содержимого текущего Документа.
      * @return string
      */

@@ -39,6 +39,12 @@ interface DOMRepositoryContract
     public function revisionPreTag(): self;
 
     /**
+     * Извлечение массива путей изображений.
+     * @return array
+     */
+    public function extractImages(): array;
+
+    /**
      * Получить строковое представление содержимого текущего Документа.
      * @return string
      */
