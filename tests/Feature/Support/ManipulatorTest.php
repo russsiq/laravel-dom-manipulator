@@ -95,7 +95,7 @@ class ManipulatorTest extends TestCase
      * Тест для файла README.
      * @return void
      */
-    public function testExample()
+    public function testExampleForReadmeFile(): void
     {
         $manipulator = $this->createManipulator();
 
