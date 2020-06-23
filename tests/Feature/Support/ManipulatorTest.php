@@ -116,7 +116,5 @@ class ManipulatorTest extends TestCase
         $expected .= '<pre class="ql-syntax" spellcheck="false">$manipulator = $this-&gt;createManipulator();</pre>'.PHP_EOL.PHP_EOL;
 
         $this->assertEquals($expected, (string) $result);
-
-
     }
 }
