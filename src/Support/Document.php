@@ -6,6 +6,7 @@ namespace Russsiq\DomManipulator\Support;
 use DOMDocument;
 
 // Сторонние зависимости.
+use Illuminate\Validation\ValidationException;
 use Russsiq\DomManipulator\Contracts\DOMDocumentContract;
 
 /**
@@ -25,10 +26,13 @@ class Document extends DOMDocument implements DOMDocumentContract
      */
     const HTML5_TRUSTED_TAGS = [
         'audio',
+        'article',
         'canvas',
         'details',
         'figcaption',
         'figure',
+        'footer',
+        'header',
         'mark',
         'picture',
         'section',
