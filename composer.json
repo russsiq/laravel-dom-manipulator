@@ -19,7 +19,7 @@
         "php": ">=7.3.0",
         "ext-dom": "*",
         "ext-libxml": "*",
-        "illuminate/support": "7.*"
+        "illuminate/support": "7.* || 8.*"
     },
     "require-dev": {
         "mockery/mockery": "^1.3.1",
