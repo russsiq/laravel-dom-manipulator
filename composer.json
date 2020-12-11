@@ -1,6 +1,6 @@
 {
     "name": "russsiq/laravel-dom-manipulator",
-    "description": "Класс-обертка для модуля DOM в Laravel 7.x.",
+    "description": "Класс-обертка для модуля DOM в Laravel 8.x.",
     "keywords": ["laravel", "dom-document", "dom-document-wrapper", "laravel-dom-manipulator"],
     "type": "library",
     "license": "MIT",
