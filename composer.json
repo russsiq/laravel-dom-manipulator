@@ -1,6 +1,6 @@
 {
     "name": "russsiq/laravel-dom-manipulator",
-    "description": "Класс-обертка для модуля DOM в Laravel 8.x.",
+    "description": "Класс-обертка для модуля DOM в Laravel 9.x.",
     "keywords": ["laravel", "dom-document", "dom-document-wrapper", "laravel-dom-manipulator"],
     "type": "library",
     "license": "MIT",
@@ -9,21 +9,23 @@
         "issues": "https://github.com/russsiq/laravel-dom-manipulator/issues",
         "source": "https://github.com/russsiq/laravel-dom-manipulator"
     },
-    "authors": [{
-        "name": "Рустам Гимранов",
-        "email": "rustam_gimranov@mail.ru",
-        "homepage": "https://github.com/russsiq",
-        "role": "Developer"
-    }],
+    "authors": [
+        {
+            "name": "Rustam Gimranov",
+            "email": "rustam_gimranov@mail.ru",
+            "homepage": "https://github.com/russsiq",
+            "role": "Developer"
+        }
+    ],
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "8.1.*",
         "ext-dom": "*",
         "ext-libxml": "*",
-        "illuminate/support": "8.*"
+        "illuminate/support": "9.*"
     },
     "require-dev": {
-        "mockery/mockery": "^1.4",
-        "phpunit/phpunit": "^9.5"
+        "mockery/mockery": "^1.5.0",
+        "phpunit/phpunit": "^9.5.20"
     },
     "autoload": {
         "psr-4": {
@@ -47,8 +49,7 @@
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
-        "test-win7": "vendor\\bin\\phpunit",
-        "testdox": "vendor\\bin\\phpunit --testdox-html tests/testdox.html"
+        "testdox": "vendor/bin/phpunit --testdox-html tests/testdox.html"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

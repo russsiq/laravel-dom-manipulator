@@ -46,21 +46,21 @@ class Document extends DOMDocument implements DOMDocumentContract
      * Форматирует вывод, добавляя отступы и дополнительные пробелы.
      * @var bool
      */
-    public $formatOutput = false;
+    public bool $formatOutput = false;
 
     /**
      * Указание не убирать лишние пробелы и отступы.
      * По умолчанию TRUE в родительском классе.
      * @var bool
      */
-    public $preserveWhiteSpace = true;
+    public bool $preserveWhiteSpace = true;
 
     /**
      * Загружает DTD и проверяет документ на соответствие.
      * По умолчанию FALSE в родительском классе.
      * @var bool
      */
-    public $validateOnParse = true;
+    public bool $validateOnParse = true;
 
     /**
      * Загрузить HTML с тегами пятой версии из строки.

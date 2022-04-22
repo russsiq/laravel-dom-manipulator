@@ -1,48 +1,68 @@
-# Класс-обертка для модуля DOM в Laravel 8.x.
+# Класс-обертка для модуля DOM в Laravel 9.x.
 
-Содержание:
-1. [Подключение](#Подключение)
-1. [Использование](#Использование)
-    - [Методы](#Методы)
-    - [Фасад `DOMManipulator`](#facade-dom-manipulator)
-1. [Тестирование](#Тестирование)
-1. [Удаление пакета](#Удаление-пакета)
-1. [Лицензия](#Лицензия)
+## Подключение
 
-### Подключение
+Для добавления зависимости в проект на Laravel, используйте менеджер пакетов Composer:
 
- - **1** Для добавления зависимости в проект на Laravel в файле `composer.json`
+```console
+composer require russsiq/laravel-dom-manipulator
+```
 
-    ```json
-    "require": {
-        "russsiq/laravel-dom-manipulator": "^0.1"
-    }
-    ```
+Если в вашем приложении включен отказ от обнаружения пакетов в директиве `dont-discover` в разделе `extra` файла `composer.json`, то необходимо самостоятельно добавить следующее в файле `config/app.php`:
 
- - **2** Для подключения в уже созданный проект воспользуйтесь командной строкой:
+- Провайдер услуг в раздел `providers`:
 
-    ```console
-    composer require "russsiq/laravel-dom-manipulator:^0.1"
-    ```
+```php
+Russsiq\DomManipulator\ManipulatorServiceProvider::class,
+```
 
- - **3** Если в вашем приложении включен отказ от обнаружения пакетов в директиве `dont-discover` в разделе `extra` файла `composer.json`, то необходимо самостоятельно добавить в файле `config/app.php`:
+- Псевдоним класса (Facade) в раздел `aliases`:
 
-    - **3.1** Провайдер услуг в раздел `providers`:
+```php
+'DOMManipulator' => Russsiq\DomManipulator\Facades\DOMManipulator::class,
+```
 
-        ```php
-        Russsiq\DomManipulator\ManipulatorServiceProvider::class,
-        ```
+## Использование
 
-    - **3.2** Псевдоним класса (Facade) в раздел `aliases`:
+### Методы
 
-        ```php
-        'DOMManipulator' => Russsiq\DomManipulator\Facades\DOMManipulator::class,
-        ```
+Все публичные методы доступны через фасад `DOMManipulator`:
 
-### Использование
+```php
+DOMManipulator::someMethod(example $someParam);
+```
 
-<a name="facade-dom-manipulator"></a>
-#### Фасад `DOMManipulator`
+Список доступных публичных методов фасада `DOMManipulator`:
+
+ - [each](#method-each)
+ - [extractImages](#method-extractImages)
+ - [remove](#method-remove)
+ - [revisionPreTag](#method-revisionPreTag)
+ - [getContent](#method-getContent)
+
+<a name="method-each"></a>
+##### `each(string $name, callable $callback): self`
+Выполнить замыкание над каждым узлом с заданным именем.
+
+<a name="method-extractImages"></a>
+##### `extractImages(): array`
+Извлечение массива путей изображений.
+
+<a name="method-getContent"></a>
+##### `getContent(): string`
+Получить строковое представление содержимого текущего Документа.
+
+<a name="method-remove"></a>
+##### `remove(string $name): self`
+Удалить все теги, содержащие переданное имя.
+
+<a name="method-revisionPreTag"></a>
+##### `revisionPreTag(): self`
+Скорректировать теги `pre`:
+- оставить единый класс для всех тегов;
+- преобразовать значения тегов в HTML-сущности.
+
+### Пример использования
 
 Для инициализации класса-обертки `Manipulator` вы можете воспользоваться методом `wrapAsDocument` фасада `DOMManipulator`:
 
@@ -70,39 +90,7 @@ print_r((string) $result);
 // <pre class="ql-syntax" spellcheck="false">$manipulator = $this-&gt;createManipulator();</pre>
 ```
 
-#### Методы
-
-Список доступных публичных методов класса-обертки `Manipulator`:
-
- - [each](#method-each)
- - [extractImages](#method-extractImages)
- - [remove](#method-remove)
- - [revisionPreTag](#method-revisionPreTag)
- - [getContent](#method-getContent)
-
-<a name="method-extractImages"></a>
-##### `extractImages(): array`
-Извлечение массива путей изображений.
-
-<a name="method-each"></a>
-##### `each(string $name, callable $callback): self`
-Выполнить замыкание над каждым узлом с заданным именем.
-
-<a name="method-remove"></a>
-##### `remove(string $name): self`
-Удалить все теги, содержащие переданное имя.
-
-<a name="method-revisionPreTag"></a>
-##### `revisionPreTag(): self`
-Скорректировать теги `pre`:
-- оставить единый класс для всех тегов;
-- преобразовать значения тегов в HTML-сущности.
-
-<a name="method-getContent"></a>
-##### `getContent(): string`
-Получить строковое представление содержимого текущего Документа.
-
-### Тестирование
+## Тестирование
 
 Для запуска тестов используйте команду:
 
@@ -110,19 +98,13 @@ print_r((string) $result);
 composer run-script test
 ```
 
-Для запуска тестов под Windows 7 используйте команду:
-
-```console
-composer run-script test-win7
-```
-
-Для формирования agile-документации, генерируемой в HTML-формате и записываемой в файл [tests/testdox.html](tests/testdox.html), используйте команду:
+Для запуска тестов и формирования agile-документации, генерируемой в HTML-формате и записываемой в файл [tests/testdox.html](tests/testdox.html), используйте команду:
 
 ```console
 composer run-script testdox
 ```
 
-### Удаление пакета
+## Удаление пакета
 
 Для удаления пакета из вашего проекта на Laravel используйте команду:
 
@@ -130,6 +112,6 @@ composer run-script testdox
 composer remove russsiq/laravel-dom-manipulator
 ```
 
-### Лицензия
+## Лицензия
 
 `laravel-dom-manipulator` – программное обеспечение с открытым исходным кодом, распространяющееся по лицензии [MIT](LICENSE).
